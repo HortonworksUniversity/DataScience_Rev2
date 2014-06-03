@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html class="clean">
+	<head></head>
+	<style>
+		#content, #logo { margin: 0 auto; width: 800px}
+	</style>
+	<body>
+		<div id="logo">
+			<table>
+				<TR>
+					<TD><IMG src="images/logo.png" height="150" width="300"></IMG></TD>
+					<TD style="font-size: 30px">Applying Data Science with Hadoop</TD>
+				</TR>
+			</table>
+		</div>
+		<div id="content">
+			<p style="text-align:center; font-size: 40px">Movie recommendations for user: <%= params[:userid] %> </p>
+			<ul>
+				<% $posters.each do |p| %>
+					<IMG src= <%= p %> height="150" width="140"> </IMG>
+  				<% end %>
+  			</ul>
+		</div>
+	</body>
+</html>
+
