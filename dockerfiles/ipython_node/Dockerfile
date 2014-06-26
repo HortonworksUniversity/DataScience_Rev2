@@ -20,6 +20,7 @@ RUN bash Anaconda-1.9.2-Linux-x86_64.sh -b
 RUN rm -f Anaconda-1.9.2-Linux-x86_64.sh
 RUN echo "export PATH=\"/anaconda/bin:$PATH\"" >> /etc/bashrc
 RUN echo "export PATH=\"/anaconda/bin:$PATH\"" >> /etc/profile
+RUN source /etc/bashrc
 RUN /anaconda/bin/ipython profile create nbserver
 
 ADD ipython/ /root/.ipython/profile_nbserver
@@ -51,5 +52,5 @@ ADD conf/nanorc /root/.nanorc
 
 EXPOSE 22 8888
 
-#ENTRYPOINT ["/root/scripts/startup.sh"]
+ENTRYPOINT ["/root/scripts/startup.sh"]
 
