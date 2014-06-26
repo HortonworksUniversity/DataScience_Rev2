@@ -19,8 +19,9 @@ git pull
 
 # By default, the following Docker images are not rebuilt. 
 # To rebuild these images, add a command-line argument named "rebuild"
-$REBUILD=false
+REBUILD=false
 # Skip the building of images by default
+echo -e "Command line arguments are $2 and $3"
 if [[ ($2 == "rebuild") || ($3 == "rebuild") ]]; then
 	$REBUILD=true;
 fi
