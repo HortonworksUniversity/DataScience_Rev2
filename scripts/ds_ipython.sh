@@ -1,5 +1,4 @@
 #!/bin/bash
-DS_DIR=/root/DataScience_Rev2
 
 echo "Starting IPython Notebook Node..."
 CID_ipython=$(docker run -d -v /root/notebooks:/root/notebooks --privileged --dns 8.8.8.8 -p 8888:8888 -p 22 --name ipython -h ipython -i -t hwxu/ipython_node bash)
