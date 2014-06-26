@@ -25,7 +25,7 @@ if [[ ($2 == "rebuild") || ($3 == "rebuild") ]]; then
 	$REBUILD=true;
 fi
 
-if [[ $REBUILD  ]];
+if [[ $REBUILD == true  ]];
 then
 
 # Build the Docker images
