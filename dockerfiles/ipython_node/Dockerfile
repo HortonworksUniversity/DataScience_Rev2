@@ -28,10 +28,6 @@ RUN echo "backend: Agg" > .config/matplotlib/matplotlibrc
 
 RUN echo "root:hadoop" | chpasswd
 
-RUN ipython profile create nbserver
-ADD ipython/ /root/.ipython/profile_nbserver
-RUN mkdir -p .config/matplotlib 
-RUN echo "backend: Agg" > .config/matplotlib/matplotlibrc
 
 ADD scripts/ /root/scripts/
 
@@ -45,6 +41,13 @@ RUN touch /root/.ssh/authorized_keys \
 RUN echo "IdentityFile /root/.ssh/id_rsa" >> /etc/ssh/ssh_config
 
 ADD conf/nanorc /root/.nanorc
+
+#RUN ipython profile create nbserver
+#ADD ipython/ /root/.ipython/profile_nbserver
+#RUN mkdir -p .config/matplotlib 
+#RUN echo "backend: Agg" > .config/matplotlib/matplotlibrc
+
+
 
 EXPOSE 22 8888
 
