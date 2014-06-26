@@ -1,7 +1,11 @@
 #!/bin/bash
 
-/root/dockerfiles/start_scripts/build.sh $1 $2 $3
-export REPO_DIR=$1
+var1=$1
+var2=$2
+var3=$3
+
+/root/dockerfiles/start_scripts/build.sh $var1 $var2 $var3
+export REPO_DIR=$var1
 
 cd /root/$REPO_DIR
 if [[ ! -z $FORCE ]];
