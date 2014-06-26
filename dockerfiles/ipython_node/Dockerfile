@@ -39,6 +39,11 @@ RUN mkdir /root/.ssh
 ADD conf/id_rsa /root/.ssh/id_rsa
 ADD conf/id_rsa.pub /root/.ssh/id_rsa.pub
 ADD conf/sshd_config /etc/ssh/
+RUN touch /root/.ssh/authorized_keys \
+    && cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys \
+    && chmod -R 600 /root/.ssh/
+RUN echo "IdentityFile /root/.ssh/id_rsa" >> /etc/ssh/ssh_config
+
 ADD conf/nanorc /root/.nanorc
 
 EXPOSE 22 8888
