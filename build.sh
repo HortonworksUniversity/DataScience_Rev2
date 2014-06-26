@@ -16,12 +16,18 @@ then
   git reset HEAD --hard
 fi
 git pull
-# Skip images by default
-if [[ -z ${SKIP_IMAGES+x} ]]; then	
-	SKIP_IMAGES=true;
+
+# By default, the following Docker images are not rebuilt. 
+# To rebuild these images, add a command-line argument named "rebuild"
+REBUILD=
+# Skip the building of images by default
+if [[ ($2 == "rebuild") || ($3 == "rebuild") ]]; then
+	REBUILD=true;
+else
+	REBUILD=false;
 fi
 
-if [[ (-z $SKIP_IMAGES) || (! -z $FORCE) ]];
+if [[ $REBUILD  ]];
 then
 
 # Build the Docker images
