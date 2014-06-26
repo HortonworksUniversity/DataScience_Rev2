@@ -577,7 +577,7 @@ c.IPKernelApp.pylab = 'inline'
 #------------------------------------------------------------------------------
 
 # The directory to use for notebooks.
-# c.NotebookManager.notebook_dir = u'/root'
+# c.NotebookManager.notebook_dir = u'/root/notebooks'
 
 #------------------------------------------------------------------------------
 # FileNotebookManager configuration
