@@ -23,7 +23,7 @@ RUN echo "export PATH=\"/anaconda/bin:$PATH\"" >> /etc/profile
 RUN source /etc/bashrc
 RUN /anaconda/bin/ipython profile create nbserver
 #RUN mkdir /root/notebooks
-RUN conda update ipython
+RUN /anaconda/bin/conda update ipython
 
 ADD ipython/ /root/.ipython/profile_nbserver
 RUN mkdir -p .config/matplotlib
