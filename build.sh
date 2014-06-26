@@ -1,7 +1,7 @@
 #!/bin/bash
 
-/root/dockerfiles/start_scripts/build.sh $1
-REPO_DIR=$1
+/root/dockerfiles/start_scripts/build.sh $1 $2 $3
+export REPO_DIR=$1
 
 cd /root/$REPO_DIR
 if [[ ! -z $FORCE ]];
@@ -19,12 +19,7 @@ git pull
 
 # By default, the following Docker images are not rebuilt. 
 # To rebuild these images, add a command-line argument named "rebuild"
-REBUILD=false
-# Skip the building of images by default
-echo -e "Command line arguments are $2 and $3"
-if [[ ($2 == "rebuild") || ($3 == "rebuild") ]]; then
-	$REBUILD=true;
-fi
+
 
 if [[ $REBUILD == true  ]];
 then
