@@ -1,7 +1,7 @@
 #!/bin/bash
 
 /root/dockerfiles/start_scripts/build.sh $1
-
+REPO_DIR=$1
 
 cd /root/$REPO_DIR
 if [[ ! -z $FORCE ]];
