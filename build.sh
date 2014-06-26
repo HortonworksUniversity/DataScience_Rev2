@@ -16,6 +16,10 @@ then
   git reset HEAD --hard
 fi
 git pull
+# Skip images by default
+if [[ -z ${SKIP_IMAGES+x} ]]; then	
+	SKIP_IMAGES=true;
+fi
 
 if [[ (-z $SKIP_IMAGES) || (! -z $FORCE) ]];
 then
