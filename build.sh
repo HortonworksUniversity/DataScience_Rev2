@@ -23,9 +23,9 @@ git pull
 
 # By default, the following Docker images are not rebuilt. 
 # To rebuild these images, add a command-line argument named "rebuild"
-REBUILD=false
+REBUILD=
 if [[ ($var2 == "rebuild") || ($var3 == "rebuild") ]]; then
-	$REBUILD=true;
+	REBUILD=true;
 fi
 
 if [[ $REBUILD == true  ]];
