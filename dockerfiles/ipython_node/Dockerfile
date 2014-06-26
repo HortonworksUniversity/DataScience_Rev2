@@ -22,7 +22,7 @@ RUN echo "export PATH=\"/anaconda/bin:$PATH\"" >> /etc/bashrc
 RUN echo "export PATH=\"/anaconda/bin:$PATH\"" >> /etc/profile
 RUN source /etc/bashrc
 RUN /anaconda/bin/ipython profile create nbserver
-RUN mkdir /root/notebooks
+#RUN mkdir /root/notebooks
 
 
 ADD ipython/ /root/.ipython/profile_nbserver
