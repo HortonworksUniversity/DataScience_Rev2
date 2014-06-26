@@ -22,41 +22,41 @@ then
 
 # Build the Docker images
 
-# Build hwx/hdp_node_base first
+# Build hwxu/hdp_node_base first
 cd /root/dockerfiles/hdp_node_base
-x=$(docker images | grep -c  hwx/hdp_node_base)
+x=$(docker images | grep -c  hwxu/hdp_node_base)
 if [ $x == 0 ]; then
-        echo -e "\n*** Building hwx/hdp_node_base image... ***\n"
-        docker build -t hwx/hdp_node_base .
-        echo -e "Build of hwx/hdp_node_base complete!"
+        echo -e "\n*** Building hwxu/hdp_node_base image... ***\n"
+        docker build -t hwxu/hdp_node_base .
+        echo -e "Build of hwxu/hdp_node_base complete!"
 else
-        echo -e "\n*** hwx/hdp_node_base image already built ***\n"
+        echo -e "\n*** hwxu/hdp_node_base image already built ***\n"
 fi
 
 
-# Build hwx/hdp_python_node
-echo -e "\n*** Building hwx/hdp_python_node ***\n"
+# Build hwxu/hdp_python_node
+echo -e "\n*** Building hwxu/hdp_python_node ***\n"
 cd /root/$REPO_DIR/dockerfiles/hdp_python_node
-docker build -t hwx/hdp_python_node .
-echo -e "\n*** Build of hwx/hdp_python_node complete! ***\n"
+docker build -t hwxu/hdp_python_node .
+echo -e "\n*** Build of hwxu/hdp_python_node complete! ***\n"
 
-# Build hwx/hdp_mahout_node
-echo -e "\n*** Building hwx/hdp_mahout_node ***\n"
+# Build hwxu/hdp_mahout_node
+echo -e "\n*** Building hwxu/hdp_mahout_node ***\n"
 cd /root/$REPO_DIR/dockerfiles/hdp_mahout_node
-docker build -t hwx/hdp_mahout_node .
-echo -e "\n*** Build of hwx/hdp_mahout_node complete! ***\n"
+docker build -t hwxu/hdp_mahout_node .
+echo -e "\n*** Build of hwxu/hdp_mahout_node complete! ***\n"
 
-# Build hwx/hdp_spark_node
-echo -e "\n*** Building hwx/hdp_spark_node ***\n"
+# Build hwxu/hdp_spark_node
+echo -e "\n*** Building hwxu/hdp_spark_node ***\n"
 cd /root/$REPO_DIR/dockerfiles/hdp_spark_node
-docker build -t hwx/hdp_spark_node .
-echo -e "\n*** Build of hwx/hdp_spark_node complete! ***\n"
+docker build -t hwxu/hdp_spark_node .
+echo -e "\n*** Build of hwxu/hdp_spark_node complete! ***\n"
 
-# Build hwx/ipython_node
-echo -e "\n*** Building hwx/ipython_node ***\n"
+# Build hwxu/ipython_node
+echo -e "\n*** Building hwxu/ipython_node ***\n"
 cd /root/$REPO_DIR/dockerfiles/ipython_node
-docker build -t hwx/ipython_node .
-echo -e "\n*** Build of hwx/ipython_node complete! ***\n"
+docker build -t hwxu/ipython_node .
+echo -e "\n*** Build of hwxu/ipython_node complete! ***\n"
 
 #If this script is execute multiple times, untagged images get left behind
 #This command removes any untagged Docker images
