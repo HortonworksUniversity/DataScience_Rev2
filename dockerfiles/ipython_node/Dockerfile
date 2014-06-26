@@ -51,5 +51,5 @@ ADD conf/nanorc /root/.nanorc
 
 EXPOSE 22 8888
 
-ENTRYPOINT ["/root/scripts/startup.sh"]
+#ENTRYPOINT ["/root/scripts/startup.sh"]
 
