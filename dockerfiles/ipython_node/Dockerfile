@@ -22,6 +22,8 @@ RUN echo "export PATH=\"/anaconda/bin:$PATH\"" >> /etc/bashrc
 RUN echo "export PATH=\"/anaconda/bin:$PATH\"" >> /etc/profile
 RUN source /etc/bashrc
 RUN /anaconda/bin/ipython profile create nbserver
+RUN mkdir /root/notebooks
+
 
 ADD ipython/ /root/.ipython/profile_nbserver
 RUN mkdir -p .config/matplotlib
@@ -42,13 +44,6 @@ RUN touch /root/.ssh/authorized_keys \
 RUN echo "IdentityFile /root/.ssh/id_rsa" >> /etc/ssh/ssh_config
 
 ADD conf/nanorc /root/.nanorc
-
-#RUN ipython profile create nbserver
-#ADD ipython/ /root/.ipython/profile_nbserver
-#RUN mkdir -p .config/matplotlib 
-#RUN echo "backend: Agg" > .config/matplotlib/matplotlibrc
-
-
 
 EXPOSE 22 8888
 
