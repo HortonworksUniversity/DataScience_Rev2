@@ -82,6 +82,6 @@ cp /etc/nanorc /root/.nanorc
 
 #Copy pre-built notebooks into /root/notebooks
 mkdir /root/notebooks
-cp /root/$REPO_DIR/dockerfiles/ipython_node/notebooks/* /root/notebooks/
+cp -r /root/$REPO_DIR/dockerfiles/ipython_node/notebooks/* /root/notebooks/
 
 echo -e "\n*** The lab environment has successfully been built for this classroom VM ***\n"
