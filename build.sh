@@ -1,6 +1,6 @@
 #!/bin/bash
 
-/root/dockerfiles/start_scripts/build.sh
+/root/dockerfiles/start_scripts/build.sh $1
 
 
 cd /root/$REPO_DIR
