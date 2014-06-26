@@ -80,4 +80,7 @@ pip install -U avro
 #Enable syntax highlighting in nano
 cp /etc/nanorc /root/.nanorc
 
+#Copy pre-built notebooks into /root/notebooks
+cp $REPO_DIR/dockerfiles/ipython_node/notebooks/* /root/notebooks/
+
 echo -e "\n*** The lab environment has successfully been built for this classroom VM ***\n"
