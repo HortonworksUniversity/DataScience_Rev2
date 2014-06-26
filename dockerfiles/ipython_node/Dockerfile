@@ -24,6 +24,7 @@ RUN source /etc/bashrc
 RUN /anaconda/bin/ipython profile create nbserver
 #RUN mkdir /root/notebooks
 RUN /anaconda/bin/conda update ipython
+RUN /anaconda/bin/conda update conda
 
 ADD ipython/ /root/.ipython/profile_nbserver
 RUN mkdir -p .config/matplotlib
