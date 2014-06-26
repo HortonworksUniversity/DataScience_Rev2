@@ -1,4 +1,7 @@
 #!/bin/bash
+# If you want to rebuild just the Docker images in this file, then add the "rebuild" argument to the command line
+# For example:
+# root@ubuntu:~# ./install_course.sh DataScience_Rev2 rebuild
 
 var1=$1
 var2=$2
