@@ -7,7 +7,7 @@ var1=$1  #DataScience_RevN
 var2=$2  #rebuild (optionally rebuild the Docker images)
 var3=$3
 
-/root/dockerfiles/start_scripts/build.sh $var1 skip-images $var3
+/root/dockerfiles/start_scripts/build.sh $var1 skip-images
 export REPO_DIR=$var1
 
 cd /root/$REPO_DIR
