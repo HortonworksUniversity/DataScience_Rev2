@@ -30,13 +30,20 @@ echo "Hive/Oozie running on $IP_hive"
 
 #Start the Mahout lab worker node
 echo "Starting node1 with Mahout lab content..."
-CID_hive=$(docker run -v $DS_DIR/labs/Lab3.1:/root/labs/lab3.1:rw -d --privileged --link namenode:namenode -e NODE_TYPE=workernode -e namenode_ip=$IP_namenode --dns 8.8.8.8 -p 4567:4567 -p 22  --name node1 -h node1 -i -t hwxu/hdp_mahout_node bash)
+CID_mahout=$(docker run -v $DS_DIR/labs/Lab3.1:/root/labs/lab3.1:rw -d --privileged --link namenode:namenode -e NODE_TYPE=workernode -e namenode_ip=$IP_namenode --dns 8.8.8.8 -p 4567:4567 -p 22  --name node1 -h node1 -i -t hwxu/hdp_mahout_node bash)
 IP_mahout=$(docker inspect --format "{{ .NetworkSettings.IPAddress }}" node1)
 echo "Started node1 (with Mahout lab content) on $IP_mahout"
 
+#Start the IPython node
+echo "Starting node2 with the IPython server..."
+CID_ipython=$(docker run -d -v /root/notebooks:/root/notebooks -v /root/nltk_data:/root/nltk_data --privileged --link namenode:namenode -e NODE_TYPE=workernode -e namenode_ip=$IP_namenode --dns 8.8.8.8 -p 8888:8888 -p 22 --name node2 -h node2 -i -t hwxu/hdp_python_node bash)
+IP_ipython=$(docker inspect --format "{{ .NetworkSettings.IPAddress }}" node2)
+IP=$(/sbin/ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}')
+echo "IPython Notebook Server Started at http://$IP:8888/ (ssh IP is $IP_ipython)"
+
 #Start the WorkerNodes
 echo "Starting $((num_of_nodes-1)) additional WorkerNodes..."
-for (( i=2; i<=$num_of_nodes; ++i));
+for (( i=3; i<=$num_of_nodes; ++i));
 do
 nodename="node$i"
 CID=$(docker run -d --privileged --link namenode:namenode -e namenode_ip=$IP_namenode -e NODE_TYPE=workernode --dns 8.8.8.8 -p 8010 -p 50075 -p 50010 -p 50020 -p 45454 -p 8081 -p 22 --name $nodename -h $nodename -i -t hwxu/hdp_python_node bash)
@@ -46,5 +53,3 @@ done
 
 #All the Containers are started
 echo "Cluster is up and running!"
-
-#ds_ipython.sh
