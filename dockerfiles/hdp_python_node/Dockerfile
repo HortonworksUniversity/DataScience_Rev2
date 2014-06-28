@@ -1,7 +1,7 @@
 #
 #
 #
-FROM hwx/hdp_node
+FROM hwxu/hdp_node
 MAINTAINER Rich Raposa, rich@hortonworks.com
 
 # Enable EPEL repo, which contains some of the Python dependencies below

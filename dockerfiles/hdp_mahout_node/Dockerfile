@@ -1,7 +1,7 @@
 #
 #
 #
-FROM hwx/hdp_python_node
+FROM hwxu/hdp_python_node
 MAINTAINER Rich Raposa, rich@hortonworks.com
 
 # Make sure that Mahout is installed (should normally be done in a base HDP image)
