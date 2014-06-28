@@ -42,7 +42,7 @@ IP=$(/sbin/ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}')
 echo "IPython Notebook Server Started at http://$IP:8888/ (ssh IP is $IP_ipython)"
 
 #Start the WorkerNodes
-echo "Starting $((num_of_nodes-1)) additional WorkerNodes..."
+echo "Starting $((num_of_nodes-2)) additional WorkerNodes..."
 for (( i=3; i<=$num_of_nodes; ++i));
 do
 nodename="node$i"
