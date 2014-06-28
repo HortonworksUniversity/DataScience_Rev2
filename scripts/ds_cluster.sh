@@ -47,4 +47,4 @@ done
 #All the Containers are started
 echo "Cluster is up and running!"
 
-ds_ipython.sh
+#ds_ipython.sh
