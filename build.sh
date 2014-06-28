@@ -3,11 +3,11 @@
 # For example:
 # root@ubuntu:~# ./install_course.sh DataScience_Rev2 rebuild
 
-var1=$1
-var2=$2
+var1=$1  #DataScience_RevN
+var2=$2  #rebuild (optionally rebuild the Docker images)
 var3=$3
 
-/root/dockerfiles/start_scripts/build.sh $var1 $var2 $var3
+/root/dockerfiles/start_scripts/build.sh $var1 skip-images $var3
 export REPO_DIR=$var1
 
 cd /root/$REPO_DIR
@@ -55,10 +55,10 @@ then
 	echo -e "\n*** Build of hwxu/hdp_spark_node complete! ***\n"
 
 	# Build hwxu/ipython_node
-	echo -e "\n*** Building hwxu/ipython_node ***\n"
-	cd /root/$REPO_DIR/dockerfiles/ipython_node
-	docker build -t hwxu/ipython_node .
-	echo -e "\n*** Build of hwxu/ipython_node complete! ***\n"
+#	echo -e "\n*** Building hwxu/ipython_node ***\n"
+#	cd /root/$REPO_DIR/dockerfiles/ipython_node
+#	docker build -t hwxu/ipython_node .
+#	echo -e "\n*** Build of hwxu/ipython_node complete! ***\n"
 
 	#If this script is execute multiple times, untagged images get left behind
 	#This command removes any untagged Docker images
