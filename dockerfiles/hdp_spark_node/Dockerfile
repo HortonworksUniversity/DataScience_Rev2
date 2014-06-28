@@ -1,7 +1,7 @@
 #
 #
 #
-FROM hwx/hdp_node
+FROM hwxu/hdp_node
 MAINTAINER Rich Raposa, rich@hortonworks.com
 
 #Install Fortran package needed by Spark MLLib
