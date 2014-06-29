@@ -1,5 +1,5 @@
 #!/bin/bash
-DS_DIR=/root/DataScience_Rev1
+DS_DIR=/root/DataScience_Rev2
 
 if [ $# -lt 1 ]
   then
@@ -41,4 +41,3 @@ done
 #All the Containers are started
 echo "Cluster is up and running!"
 
-ds_ipython.sh
