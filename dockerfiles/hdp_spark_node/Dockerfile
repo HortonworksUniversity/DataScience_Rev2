@@ -7,6 +7,14 @@ MAINTAINER Rich Raposa, rich@hortonworks.com
 #Install Fortran package needed by Spark MLLib
 RUN yum -y install gcc-gfortran --enablerepo=updates 
 
+# Install base Ruby packages for web front end used in Mahout labs
+RUN yum -y install gcc gcc-c++ ruby ruby-devel rubygems
+
+# Install additional Ruby gems needed by web front end for Mahout labs
+RUN gem install sinatra --no-ri --no-rdoc
+RUN gem install fastercsv --no-ri --no-rdoc
+RUN gem install json --no-ri --no-rdoc
+
 #Install Spark and Spark Python module
 RUN rpm -Uvh http://public-repo-1.hortonworks.com/spark/centos6/rpms/spark-core-0.9.1.2.1.1.0-22.el6.noarch.rpm
 RUN rpm -Uvh http://public-repo-1.hortonworks.com/spark/centos6/rpms/spark-python-0.9.1.2.1.1.0-22.el6.noarch.rpm
@@ -26,12 +34,3 @@ RUN sed -i "/\/usr\/lib\/spark\/spark-shell/c\\/usr\/lib\/spark\/bin\/spark-shel
 # Hack: link Python 2.7 to /usr/bin so that Spark will work in YARN. Need to figure out how to properly set YARN env variables to avoid having to make this change
 RUN mv /usr/bin/python /usr/bin/python.old
 RUN ln -s /anaconda/bin/python /usr/bin/python
-
-# Install base Ruby packages for web front end used in Mahout labs
-RUN yum -y install gcc gcc-c++ ruby ruby-devel rubygems
-
-# Install additional Ruby gems needed by web front end for Mahout labs
-RUN gem install sinatra --no-ri --no-rdoc
-RUN gem install fastercsv --no-ri --no-rdoc
-RUN gem install json --no-ri --no-rdoc
-
