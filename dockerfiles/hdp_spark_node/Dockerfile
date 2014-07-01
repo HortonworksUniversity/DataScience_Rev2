@@ -27,8 +27,11 @@ RUN sed -i "/\/usr\/lib\/spark\/spark-shell/c\\/usr\/lib\/spark\/bin\/spark-shel
 RUN mv /usr/bin/python /usr/bin/python.old
 RUN ln -s /anaconda/bin/python /usr/bin/python
 
-#Install Anaconda Python package. Spark MLLib requires Python 2.7, which doesn't come standard in CentOS
-#RUN wget http://09c8d0b2229f813c1b93-c95ac804525aac4b6dba79b00b39d1d3.r79.cf1.rackcdn.com/Anaconda-1.9.2-Linux-x86_64.sh
-#RUN bash Anaconda-1.9.2-Linux-x86_64.sh -b
-#RUN rm -f Anaconda-1.9.2-Linux-x86_64.sh
-#RUN echo "export PATH=\"/anaconda/bin:$PATH\"" >> /etc/bashrc
+# Install base Ruby packages for web front end used in Mahout labs
+RUN yum -y install gcc gcc-c++ ruby ruby-devel rubygems
+
+# Install additional Ruby gems needed by web front end for Mahout labs
+RUN gem install sinatra --no-ri --no-rdoc
+RUN gem install fastercsv --no-ri --no-rdoc
+RUN gem install json --no-ri --no-rdoc
+
