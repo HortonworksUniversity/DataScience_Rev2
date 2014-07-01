@@ -82,7 +82,7 @@ cp /etc/nanorc /root/.nanorc
 
 #Copy pre-built notebooks into /root/notebooks
 mkdir -p /root/notebooks
-cp -r /root/$REPO_DIR/dockerfiles/ipython_node/notebooks/* /root/notebooks/
+cp -r /root/$REPO_DIR/dockerfiles/hdp_python_node/notebooks/* /root/notebooks/
 
 #The NLTK toolkit saves downloaded content here:
 mkdir -p /root/nltk_data
