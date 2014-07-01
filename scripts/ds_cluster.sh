@@ -30,7 +30,7 @@ echo "Hive/Oozie running on $IP_hive"
 
 #Start the IPython node
 echo "Starting node1 with the IPython server..."
-CID_ipython=$(docker run -d -v /root/notebooks:/root/notebooks -v /root/nltk_data:/root/nltk_data --privileged --link namenode:namenode -e NODE_TYPE=workernode -e namenode_ip=$IP_namenode --dns 8.8.8.8 -p 8888:8888 -p 22 --name node1 -h node1 -i -t hwxu/hdp_spark_node bash)
+CID_ipython=$(docker run -d -v $DS_DIR/labs:/root/labs:rw -v /root/notebooks:/root/notebooks:rw -v /root/nltk_data:/root/nltk_data --privileged --link namenode:namenode -e NODE_TYPE=workernode -e namenode_ip=$IP_namenode --dns 8.8.8.8 -p 8888:8888 -p 22 --name node1 -h node1 -i -t hwxu/hdp_spark_node bash)
 IP_ipython=$(docker inspect --format "{{ .NetworkSettings.IPAddress }}" node1)
 IP=$(/sbin/ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}')
 echo "IPython Notebook Server Started at http://$IP:8888/ (ssh IP is $IP_ipython)"
@@ -41,7 +41,7 @@ echo "Starting $num_of_nodes WorkerNodes..."
 for (( i=2; i<=$num_of_nodes; ++i));
 do
 nodename="node$i"
-CID=$(docker run -v $DS_DIR/labs/demos:/root/labs/demos:rw -d --privileged --link namenode:namenode -e namenode_ip=$IP_namenode -e NODE_TYPE=workernode --dns 8.8.8.8 -p 8010 -p 50075 -p 50010 -p 50020 -p 45454 -p 8081 -p 22 --name $nodename -h $nodename -i -t hwxu/hdp_spark_node)
+CID=$(docker run -v $DS_DIR/labs:/root/labs:rw -d --privileged --link namenode:namenode -e namenode_ip=$IP_namenode -e NODE_TYPE=workernode --dns 8.8.8.8 -p 8010 -p 50075 -p 50010 -p 50020 -p 45454 -p 8081 -p 22 --name $nodename -h $nodename -i -t hwxu/hdp_spark_node)
 IP_workernode=$(docker inspect --format "{{ .NetworkSettings.IPAddress }}" $nodename)
 echo "Started $nodename on IP $IP_workernode"
 done
