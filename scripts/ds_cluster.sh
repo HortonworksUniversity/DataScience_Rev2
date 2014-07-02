@@ -37,7 +37,7 @@ echo "IPython Notebook Server Started at http://$IP:8888/ (ssh IP is $IP_ipython
 
 
 #Start the WorkerNodes
-echo "Starting $num_of_nodes WorkerNodes..."
+echo "Starting ($num_of_nodes-1) WorkerNodes..."
 for (( i=2; i<=$num_of_nodes; ++i));
 do
 nodename="node$i"
