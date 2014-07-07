@@ -76,6 +76,9 @@ apt-get -y --force-yes install python-pip
 apt-get -y --force-yes install python-dateutil
 pip install -U avro
 
+#install graphviz (for the dot command to work in the DecisionTree demo)
+apt-get -y --force-yes install graphviz
+
 
 #Enable syntax highlighting in nano
 cp /etc/nanorc /root/.nanorc
