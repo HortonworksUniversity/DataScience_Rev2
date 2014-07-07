@@ -79,6 +79,8 @@ pip install -U avro
 #install graphviz (for the dot command to work in the DecisionTree demo)
 apt-get -y --force-yes install graphviz
 
+#Fix a small bug in Pig
+sed '2d' /usr/bin/pig >> /usr/bin/pig
 
 #Enable syntax highlighting in nano
 cp /etc/nanorc /root/.nanorc
