@@ -12,7 +12,7 @@ ADD ipython/ /root/.ipython/profile_nbserver
 RUN mkdir -p .config/matplotlib
 RUN echo "backend: Agg" > .config/matplotlib/matplotlibrc
  
-RUN pip install avro 
+RUN /anaconda/bin/pip install avro 
  
 EXPOSE 22 8888
 
