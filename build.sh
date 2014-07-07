@@ -80,7 +80,7 @@ pip install -U avro
 apt-get -y --force-yes install graphviz
 
 #Fix a small bug in Pig
-sed '2d' /usr/bin/pig >> /usr/bin/pig
+sed '2d' /usr/bin/pig 
 
 #Enable syntax highlighting in nano
 cp /etc/nanorc /root/.nanorc
