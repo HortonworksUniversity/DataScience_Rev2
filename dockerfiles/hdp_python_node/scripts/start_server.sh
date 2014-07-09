@@ -6,4 +6,4 @@ mkdir -p /root/nltk_data
 
 export HOME=/root
 cd /root/notebooks
-IPYTHON_OPTS="notebook --pylab inline --profile nbserver --port 9999" /usr/lib/spark/bin/pyspark
+IPYTHON_OPTS="notebook --pylab inline --profile nbserver --port 12345" /usr/lib/spark/bin/pyspark
