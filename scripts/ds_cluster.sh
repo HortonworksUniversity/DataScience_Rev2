@@ -30,7 +30,7 @@ echo "Hive/Oozie running on $IP_hive"
 
 #Start the IPython node
 echo "Starting node1 with the IPython server..."
-CID_ipython=$(docker run -d -v /root/datascience/labs:/root/labs:rw -v /root/notebooks:/root/notebooks:rw -v /root/nltk_data:/root/nltk_data --privileged --link namenode:namenode -e NODE_TYPE=workernode -e namenode_ip=$IP_namenode --dns 8.8.8.8 -p 8888:8888 -p 22 --name node1 -h node1 -i -t hwxu/hdp_spark_node bash)
+CID_ipython=$(docker run -d -v /root/datascience/labs:/root/labs:rw -v /root/notebooks:/root/notebooks:rw -v /root/nltk_data:/root/nltk_data --privileged --link namenode:namenode -e NODE_TYPE=workernode -e namenode_ip=$IP_namenode --dns 8.8.8.8 -p 9999:9999 -p 8888:8888 -p 22 --name node1 -h node1 -i -t hwxu/hdp_spark_node bash)
 IP_ipython=$(docker inspect --format "{{ .NetworkSettings.IPAddress }}" node1)
 IP=$(/sbin/ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}')
 echo "IPython Notebook Server Started at http://$IP:8888/ (ssh IP is $IP_ipython)"
