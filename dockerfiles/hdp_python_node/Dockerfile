@@ -15,7 +15,7 @@ RUN echo "backend: Agg" > .config/matplotlib/matplotlibrc
  
 RUN /anaconda/bin/pip install avro 
  
-EXPOSE 22 8888 9999
+EXPOSE 22 8888 12345
 
 
 ENTRYPOINT ["/root/scripts/startup.sh"]
