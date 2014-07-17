@@ -30,6 +30,8 @@ fi
 git pull
 
 cd /root/dockerfiles
+#Temporary - remove any local edits in the dockerfiles project folder
+git reset HEAD --hard
 if [[ ! -z $FORCE ]];
 then
   git reset HEAD --hard
