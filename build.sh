@@ -10,6 +10,18 @@ var3=$3
 /root/dockerfiles/start_scripts/build.sh $var1 skip-images
 export REPO_DIR=$var1
 
+# Rebuild hwxu/hdp_node to make sure students have a fix to the timeline server start script
+echo -e "\n*** Building hwxu/hdp_node ***\n"
+cd /root/dockerfiles/hdp_node
+docker build -t hwxu/hdp_node .
+echo -e "\n*** Build of hwxu/hdp_node complete! ***\n"
+
+cp /root/dockerfiles/hdp_node/configuration_files/core_hadoop/yarn-site.xml /etc/hadoop/conf
+
+#If this script is execute multiple times, untagged images get left behind
+#This command removes any untagged Docker images
+docker rmi -f $(docker images | grep '^<none>' | awk '{print $3}')
+
 cd /root/$REPO_DIR
 if [[ ! -z $FORCE ]];
 then
@@ -35,6 +47,13 @@ if [[ $REBUILD == true  ]];
 then
 	echo -e "NOTE: Rebuilding Data Science Docker images..."
 
+        # Build the Docker images
+        # Build hwxu/hdp_anaconda_node
+        echo -e "\n*** Building hwxu/hdp_anaconda_node ***\n"
+        cd /root/$REPO_DIR/dockerfiles/hdp_anaconda_node
+        docker build -t hwxu/hdp_anaconda_node .
+        echo -e "\n*** Build of hwxu/hdp_anaconda_node complete! ***\n"
+
 	# Build the Docker images
 	# Build hwxu/hdp_python_node
 	echo -e "\n*** Building hwxu/hdp_python_node ***\n"
@@ -53,12 +72,6 @@ then
 	cd /root/$REPO_DIR/dockerfiles/hdp_spark_node
 	docker build -t hwxu/hdp_spark_node .
 	echo -e "\n*** Build of hwxu/hdp_spark_node complete! ***\n"
-
-	# Build hwxu/ipython_node
-#	echo -e "\n*** Building hwxu/ipython_node ***\n"
-#	cd /root/$REPO_DIR/dockerfiles/ipython_node
-#	docker build -t hwxu/ipython_node .
-#	echo -e "\n*** Build of hwxu/ipython_node complete! ***\n"
 
 	#If this script is execute multiple times, untagged images get left behind
 	#This command removes any untagged Docker images
