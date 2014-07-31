@@ -104,4 +104,10 @@ cp -r /root/$REPO_DIR/dockerfiles/hdp_python_node/notebooks/* /root/notebooks/
 #The NLTK toolkit saves downloaded content here:
 mkdir -p /root/nltk_data
 
+#Hack to fix broken Pig script if needed
+head -2 /usr/bin/pig | tail | grep "\-e" > /dev/null
+if [[ $? != 0 ]]; then
+  sed -i '2iif [ -e /usr/libexec/bigtop-detect-javahome ]\; then' /usr/bin/pig
+fi
+
 echo -e "\n*** The lab environment has successfully been built for this classroom VM ***\n"
