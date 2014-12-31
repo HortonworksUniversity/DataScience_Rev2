@@ -17,5 +17,4 @@ then
 else
   echo "No updates found for course."
 fi
-
 cd $pwd
