@@ -14,6 +14,6 @@ for line in fileinput.input():
 
 tokenizer = RegexpTokenizer(r'\w+')
 freq = FreqDist(tokenizer.tokenize(cleaned_input))
-for k in freq.keys()[:50]:
-    print "%s\t%s" % (k, freq[k]) 
+for k, f in freq.most_comment(50):
+    print "%s\t%s" % (k, f) 
 
