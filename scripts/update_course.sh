@@ -2,7 +2,7 @@
 
 pwd=$PWD
 cd /root/ds
-git pull origin --dry-run  | grep -q -v 'Already up-to-date.' && changed=1
+git pull --dry-run origin | grep -q -v 'Already up-to-date.' && changed=1
 if [[ changed == 1 ]];
 then
   old=`readlink /root/ds`
