@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#TODO: Improve this script to only clone the repo when changes actually exist since the last update
+#TODO: Improve this script to only clone the repo when changes have actually happened since the last update
 
 pwd=$PWD
 cd /root/ds
