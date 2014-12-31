@@ -9,7 +9,7 @@ then
   cd /root
   ts=`date +"%Y%m%d-%H%M%S"`
   git clone https://github.com/HortonworksUniversity/DataScience_Rev2.git ds-$ts
-  rm /root/ds
+  rm -f /root/ds
   ln -s /root/ds-$ts /root/ds
   cd /root/ds
   git checkout hdp22-sandbox
